@@ -35,10 +35,10 @@ describe 'ProjectCreationHandler', ->
 			addFile: sinon.stub().callsArg(4)
 			setRootDoc: sinon.stub().callsArg(2)
 
-		@user = 
+		@user =
 			first_name:"first name here"
 			last_name:"last name here"
-			ace: 
+			ace:
 				spellCheckLanguage:"de"
 
 		@User = findById:sinon.stub().callsArgWith(2, null, @user)
@@ -61,7 +61,7 @@ describe 'ProjectCreationHandler', ->
 				@handler.createBlankProject ownerId, projectName, =>
 					@ProjectModel::save.called.should.equal true
 					done()
-				
+
 			it "should return the project in the callback", (done)->
 				@handler.createBlankProject ownerId, projectName, (err, project)->
 					project.name.should.equal projectName
@@ -82,7 +82,7 @@ describe 'ProjectCreationHandler', ->
 			beforeEach ->
 				@ProjectModel::save = sinon.stub().callsArgWith(0, new Error("something went wrong"))
 				@handler.createBlankProject ownerId, projectName, @callback
-			
+
 			it 'should return the error to the callback', ->
 				should.exist @callback.args[0][0]
 
@@ -147,11 +147,11 @@ describe 'ProjectCreationHandler', ->
 				.calledWith(project_id, rootFolderId, "references.bib", ["references.bib", "lines"])
 				.should.equal true
 
-		it 'should insert universe.jpg', ->
+		it 'should insert frise.jpg', ->
 			@ProjectEntityHandler.addFile
 				.calledWith(
-					project_id, rootFolderId, "universe.jpg",
-					Path.resolve(__dirname + "/../../../../app/templates/project_files/universe.jpg")
+					project_id, rootFolderId, "frise.jpg",
+					Path.resolve(__dirname + "/../../../../app/templates/project_files/frise.jpg")
 				)
 				.should.equal true
 

@@ -157,7 +157,7 @@ require [
 			$confirm.off 'click'
 		$modal.find('.cancel').click (e)->
 			$modal.modal('hide')
-		
+
 
 	$('#blankNewProject').click (event)->
 		newProject.call(@, 'none')
@@ -165,12 +165,15 @@ require [
 	$('#newProjectExample').click (event)->
 		newProject.call(@, 'example')
 
+	$('#newProjectBeamer').click (event)->
+		newProject.call(@, 'beamer')
+
 	$('#newProjectVisual').click (event)->
 		newProject.call(@, 'visual', 'main.tex')
 
 	$('#uploadNewProject').click (event)->
 		event.preventDefault()
-		
+
 		$modal = $('#projectUploadModal')
 		$modal.modal({backdrop:true, show:true, keyboard:true})
 
@@ -208,7 +211,7 @@ require [
 
 		$modal.find('.cancel').click (e)->
 			$modal.modal('hide')
-			
+
 	sysMsgKey = "dismiss-system-message-090114"
 	if $.localStorage(sysMsgKey)
 		$("#systemMessage").hide()

@@ -2,7 +2,7 @@ logger = require('logger-sharelatex')
 async = require("async")
 metrics = require('../../infrastructure/Metrics')
 Settings = require('settings-sharelatex')
-ObjectId = require('mongoose').Types.ObjectId	
+ObjectId = require('mongoose').Types.ObjectId
 Project = require('../../models/Project').Project
 Folder = require('../../models/Folder').Folder
 VersioningApiHandler = require('../Versioning/VersioningApiHandler')
@@ -57,8 +57,34 @@ module.exports =
 						ProjectEntityHandler.addDoc project._id, project.rootFolder[0]._id, "references.bib", docLines, "", (error, doc)->
 							callback(error)
 				(callback) ->
-					universePath = Path.resolve(__dirname + "/../../../templates/project_files/universe.jpg")
-					ProjectEntityHandler.addFile project._id, project.rootFolder[0]._id, "universe.jpg", universePath, callback
+					frisePath = Path.resolve(__dirname + "/../../../templates/project_files/frise.jpg")
+					ProjectEntityHandler.addFile project._id, project.rootFolder[0]._id, "frise.jpg", frisePath, callback
+			], (error) ->
+				callback(error, project)
+
+	createBeamerProject: (owner_id, projectName, callback = (error, project) ->)->
+		self = @
+		@createBlankProject owner_id, projectName, (error, project)->
+			return callback(error) if error?
+			async.series [
+				(callback) ->
+					self._buildTemplate "beamer.tex", owner_id, projectName, (error, docLines)->
+						return callback(error) if error?
+						ProjectEntityHandler.addDoc project._id, project.rootFolder[0]._id, "main.tex", docLines, "", (error, doc)->
+							return callback(error) if error?
+							ProjectEntityHandler.setRootDoc project._id, doc._id, callback
+				(callback) ->
+					frisePath = Path.resolve(__dirname + "/../../../templates/project_files/frise.jpg")
+					ProjectEntityHandler.addFile project._id, project.rootFolder[0]._id, "frise.jpg", frisePath, callback
+				(callback) ->
+					ENSTAPath = Path.resolve(__dirname + "/../../../templates/project_files/ENSTA-ParisTech.jpg")
+					ProjectEntityHandler.addFile project._id, project.rootFolder[0]._id, "ENSTA-ParisTech.jpg", ENSTAPath, callback
+				(callback) ->
+					silhouettesPath = Path.resolve(__dirname + "/../../../templates/project_files/silhouettes.jpg")
+					ProjectEntityHandler.addFile project._id, project.rootFolder[0]._id, "silhouettes.jpg", silhouettesPath, callback
+				(callback) ->
+					beamerThemePath = Path.resolve(__dirname + "/../../../templates/project_files/beamerthemeENSTA.sty")
+					ProjectEntityHandler.addFile project._id, project.rootFolder[0]._id, "beamerthemeENSTA.sty", beamerThemePath, callback
 			], (error) ->
 				callback(error, project)
 

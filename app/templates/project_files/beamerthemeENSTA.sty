@@ -1,0 +1,123 @@
+\mode<presentation>
+
+% options %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newif\ifbeamer@enit
+\beamer@enitfalse
+\DeclareOptionBeamer{ENIT}{\beamer@enittrue}
+
+\ProcessOptionsBeamer
+
+% couleurs %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\definecolor{enstabc}{RGB}{16,132,184}
+\definecolor{enstabf}{RGB}{26,42,93}
+
+\definecolor{bleu}{RGB}{1,55,153}
+\definecolor{gris}{RGB}{94,97,104}
+
+\usecolortheme[named=enstabc]{structure}
+
+\setbeamercolor{title}{fg=bleu}
+\setbeamercolor{title in head/foot}{fg=bleu}
+\setbeamercolor{author in head/foot}{fg=bleu}
+
+\setbeamercolor*{block title}{fg=white,bg=structure}
+\setbeamercolor*{block body}{bg=normal text.bg!92!black}
+
+% fontes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\setbeamerfont{title}{series=\bfseries}
+\setbeamerfont{frametitle}{series=\bfseries}
+
+% fond %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\pgfdeclareimage[width=\paperwidth]{frise}{frise.jpg}
+\pgfdeclareimage[height=0.19\paperheight]{ensta-titre}{ENSTA-ParisTech.jpg}
+\pgfdeclareimage[width=0.07\paperwidth]{ensta}{ENSTA-ParisTech.jpg}
+\ifbeamer@enit
+\pgfdeclareimage[height=0.2\paperheight]{enit-titre}{ENIT.png}
+\pgfdeclareimage[width=0.09\paperwidth]{enit}{ENIT.png}
+\fi
+\pgfdeclareimage[width=0.26\paperwidth]{silhouettes}{silhouettes.jpg}
+
+\def\fond
+{
+  \ifnum\c@framenumber=1%
+    \begin{pgfpicture}
+      \pgftext[x=0mm,y=0mm]{\pgfuseimage{frise}}
+      \ifbeamer@enit
+        \pgftext[x=-31mm,y=-46mm]{\color{gris}{\small École nationale d'ingénieurs}}
+        \pgftext[x=-17mm,y=-50mm]{\color{gris}{\small de \textbf{Tunis}}}
+        \pgftext[x=-20mm,y=-63mm]{\pgfuseimage{enit-titre}}
+      \fi
+      \pgftext[x=32mm,y=-46mm]{\color{gris}{\small École nationale supérieure}}
+      \pgftext[x=32.5mm,y=-50mm]{\color{gris}{\small de \textbf{techniques avancées}}}
+      \pgftext[x=41mm,y=-64mm]{\pgfuseimage{ensta-titre}}
+    \end{pgfpicture}
+  \else%
+    \begin{pgfpicture}
+      \pgfpathrectangle{\pgfpoint{0mm}{0mm}}{\pgfpoint{14mm}{-14mm}}
+      \pgfsetfillcolor{bleu}
+      \pgfusepath{draw,fill}
+      \ifbeamer@enit
+        \pgftext[x=120mm,y=-22mm]{\pgfuseimage{enit}}
+      \fi
+      \pgftext[x=120mm,y=-8mm]{\pgfuseimage{ensta}}
+      \pgftext[x=107mm,y=-71mm]{\pgfuseimage{silhouettes}}
+    \end{pgfpicture}
+  \fi%
+}
+
+\setbeamertemplate{background canvas}{\fond}
+
+% page de titre %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% fortement inspiré de beamer/themes/inner/beamerinnerthemedefault.sty
+
+\defbeamertemplate*{title page}{ensta}[1][]
+{
+  \vskip20mm%
+  \begin{centering}
+    \begin{beamercolorbox}[sep=8pt,center,#1]{title}
+      \usebeamerfont{title}\inserttitle\par%
+      \ifx\insertsubtitle\@empty%
+      \else%
+        \vskip0.25em%
+        {\usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\insertsubtitle\par}%
+      \fi%
+    \end{beamercolorbox}%
+  \end{centering}
+  \vfill
+}
+
+% pages intérieures %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\setbeamertemplate{frametitle}[default][dp=5mm,leftskip=14mm,rightskip=14mm plus1fil]
+
+% symboles de navigation %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\setbeamertemplate{navigation symbols}{}
+
+% pied de page %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% fortement inspiré de beamer/themes/outer/beamerouterthemesplit.sty
+
+\defbeamertemplate*{footline}{ensta}
+{%
+  \leavevmode%
+  \hbox{\begin{beamercolorbox}[wd=.5\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.3cm,rightskip=.3cm plus1fill]{title in head/foot}%
+    \usebeamerfont{title in head/foot}\insertshorttitle
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.5\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.3cm,rightskip=.3cm plus1fil]{author in head/foot}%
+    \usebeamerfont{author in head/foot}\insertshortauthor
+    \hfill\insertframenumber{} / \inserttotalframenumber
+  \end{beamercolorbox}}%
+  \vskip0pt%
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\mode
+<all>
+

@@ -83,6 +83,14 @@ module.exports = class ProjectController
 				else
 					logger.log project: project, user: user, name: projectName, type: "example", "created project"
 					res.send {project_id:project._id}
+		else if template == 'beamer'
+			projectCreationHandler.createBeamerProject user._id, projectName, (err, project)->
+				if err?
+					logger.error err: err, project: project, user: user, name: projectName, type: "beamer", "error creating project"
+					res.send 500
+				else
+					logger.log project: project, user: user, name: projectName, type: "beamer", "created project"
+					res.send {project_id:project._id}
 		else
 			projectCreationHandler.createBasicProject user._id, projectName, (err, project)->
 				if err?
@@ -91,7 +99,7 @@ module.exports = class ProjectController
 				else
 					logger.log project: project, user: user, name: projectName, type: "basic", "created project"
 					res.send {project_id:project._id}
-	
+
 	loadEditor: (req, res)->
 		timer = new metrics.Timer("load-editor")
 		if !Settings.editorIsOpen

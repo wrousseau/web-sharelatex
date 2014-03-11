@@ -1,73 +1,73 @@
 #deleteEntityModal(style='display: none')
 	.modal
 		.modal-header
-			h3 Delete Project
+			h3 Supprimer le Projet
 		.modal-body
-			span.message Are you sure you want to delete 
-				strong.name Project
+			span.message Confirmer la suppression du
+				strong.name Projet
 				| ?
 		.modal-footer
-			button.btn.btn-danger.confirm Delete Forever
-			button.btn.cancel No
+			button.btn.btn-danger.confirm Suppression Définitive
+			button.btn.cancel Annuler
 
 #leaveProjectModal(style='display: none')
 	.modal
 		.modal-header
-			h3 Leave Project
+			h3 Fermer le Projet
 		.modal-body
-			span.message Are you sure you want to leave 
-				strong.name Project
+			span.message Êtes vous sûr de vouloir fermer le
+				strong.name Projet
 				| ?
 		.modal-footer
-			button.btn.btn-danger.confirm Leave
-			button.btn.cancel No
+			button.btn.btn-danger.confirm Fermer
+			button.btn.cancel Non
 
 #deleteUserAccountModal(style='display: none')
 	.modal
 		.modal-header
-			h3 Delete Account
+			h3 Supprimer le Compte
 		.modal-body
-			span.message Type 
-				strong Delete 
+			span.message Type
+				strong Delete
 				| below to confirm you want to delete your account forever
 			div &nbsp;
 			input.inputmodal(placeholder='')
 		.modal-footer
-			button.btn.btn-danger#confirmDeleteUser Delete Forever
-			button.btn.cancel Cancel
+			button.btn.btn-danger#confirmDeleteUser Supprimer Définitivement
+			button.btn.cancel Annuler
 
 #cloneProjectModal(style='display: none')
 	.modal
 		.modal-header
-			h3 Clone Project
+			h3 Cloner le Projet
 		.modal-body
 			form.form-horizontal(onkeydown="if (event.keyCode == 13){event.preventDefault(); document.getElementById('confirmCloneProject').click()}")
-				input.inputmodal#newProjectName(placeholder='New Name')
+				input.inputmodal#newProjectName(placeholder='Nouveau Projet')
 		.modal-footer
-			button.btn.btn-primary#confirmCloneProject Create
-			button.btn.cancel Cancel
+			button.btn.btn-primary#confirmCloneProject Créer
+			button.btn.cancel Annuler
 
 #newProjectModal(style='display: none')
 	.modal
 		.modal-header
-			h3 New Project
+			h3 Nouveau Projet
 		.modal-body
 			form.form-horizontal(onkeydown="if (event.keyCode == 13){event.preventDefault(); document.getElementById('confirmNewProject').click()}")
 				input.inputmodal#newProjectName(placeholder='name')
 		.modal-footer
-			button.btn.btn-primary#confirmNewProject Create
-			button.btn.cancel Cancel
+			button.btn.btn-primary#confirmNewProject Créer
+			button.btn.cancel Annuler
 
 #newEntityModal(style='display: none')
 	.modal
 		.modal-header
-			h3 
+			h3
 		.modal-body
 			form.form-horizontal(onkeydown="if (event.keyCode == 13){event.preventDefault(); $('.in button#genericSave').click()}")
 				input.inputmodal.span3(placeholder='name')
 		.modal-footer
-			button.btn.btn-primary#genericSave.confirm Save
-			button.btn.cancel Cancel
+			button.btn.btn-primary#genericSave.confirm Sauvegarder
+			button.btn.cancel Annuler
 
 
 #errorModal(style='display: none')
@@ -80,17 +80,17 @@
 #genericServerErrorModal(style='display: none')
 	.modal
 		.modal-header
-			h3 There was a problem talking to the server
+			h3 Erreur de communication avec le serveur
 		.modal-body
-			span.message Sorry, we couldn't complete your request right now. Please wait a few moments and try again. If the problem persists, please let us know.
+			span.message Impossible d'effectuer la requête actuellement. Essayez à nouveau dans quelques minutes. Si le problème persiste, merci de contacter les administrateurs.
 		.modal-footer
 			button.btn.btn-primary.cancel Ok
 
 #projectUploadModal(style='display: none')
 	.modal
 		.modal-header
-			h3 Upload Zipped Project
+			h3 Uploader Projet Zippé
 		.modal-body#projectFileUpload
-			span Upload a zipped project
+			span Uploader un projet zippé
 		.modal-footer
-			button.btn.cancel Cancel
+			button.btn.cancel Annuler
