@@ -68,7 +68,7 @@ define [
 					permissionsLevel: "readAndWrite"
 				@ide.project = @project
 				@ide.trigger "afterJoinProject", @project
-				
+
 			it "should socket show the admin controls on the member list", ->
 				@projectMembersManager.view.options.showAdminControls.should.equal false
 
@@ -91,12 +91,12 @@ define [
 			beforeEach ->
 				@ide.project = @project
 				@ide.trigger "afterJoinProject", @project
-			
+
 			describe "when a member is removed client-side", ->
 				beforeEach ->
 					@socket.on "removeUserFromProject", @removeUserFromProject = sinon.spy()
 					@projectMembersManager.removeMember id: "member-123"
-					
+
 				it "should call socket.removeUserFromProject", ->
 					@removeUserFromProject.calledWith("member-123").should.equal true
 
@@ -131,13 +131,13 @@ define [
 						sinon.stub AccountManager, "askToUpgrade", (ide, options) ->
 							ide.project.set("features", collaborators: 5)
 						@projectMembersManager.addMember "new-member@example.com", "readAndWrite"
-					
+
 					afterEach ->
 						AccountManager.askToUpgrade.restore()
 
 					it "should start the user on their free trial", ->
 						AccountManager.askToUpgrade.called.should.equal true
-					
+
 			describe "when a member is added server-side", ->
 				beforeEach ->
 					@socket.emit "userAddedToProject",
@@ -179,15 +179,15 @@ define [
 		describe "when formatting privileges", ->
 			it "should format the read-write privileges nicely", ->
 				@collection.add new User email: "test1@example.com", privileges: "readAndWrite"
-				@view.$(".projectMember").find(".privileges").text().should.equal "Read and Write"
+				@view.$(".projectMember").find(".privileges").text().should.equal "Lecture Seule"
 
 			it "should format the read-only privileges nicely", ->
 				@collection.add new User email: "test1@example.com", privileges: "readOnly"
-				@view.$(".projectMember").find(".privileges").text().should.equal "Read Only"
+				@view.$(".projectMember").find(".privileges").text().should.equal "Lecture Seule"
 
 			it "should format the owner privileges nicely", ->
 				@collection.add new User email: "test1@example.com", privileges: "owner"
-				@view.$(".projectMember").find(".privileges").text().should.equal "Owner"
+				@view.$(".projectMember").find(".privileges").text().should.equal "Propriétaire"
 
 		describe "when the collection already has entries when the view is rendered", ->
 			beforeEach ->
@@ -247,11 +247,11 @@ define [
 
 			describe "when the remove link is clicked", ->
 				beforeEach -> @view.$(".projectMember").find(".removeUser").click()
-				
+
 				it "should remove the user", ->
 					@projectMembersManager.removeMember.called.should.equal true
 					@projectMembersManager.removeMember.calledWith(@member).should.equal true
-		
+
 		describe "when adding a user", ->
 			beforeEach ->
 				sinon.stub @projectMembersManager, "addMember", (email, privileges) ->
@@ -264,7 +264,7 @@ define [
 					@view.$(".email").val("new-user@example.com")
 					@view.$(".privileges").val("readOnly")
 					@view.$(".addUser").click()
-				
+
 				it "should add a user", ->
 					@projectMembersManager.addMember.called.should.equal true
 					@projectMembersManager.addMember.calledWith("new-user@example.com", "readOnly").should.equal true

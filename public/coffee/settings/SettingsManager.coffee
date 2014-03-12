@@ -44,13 +44,13 @@ define [
 				modalOptions =
 					templateId:'deleteEntityModal'
 					isStatic: false
-					title:'Delete Project'
-					message: "Are you sure you want to delete this project?"
+					title:'Supprimer le Projet'
+					message: "Êtes-vous sûr(e) de vouloir supprimer ce projet ?"
 					buttons: [{
-							text     : "Cancel",
+							text     : "Annuler",
 							class    : "btn",
 						}, {
-						text     : "Delete Forever",
+						text     : "Suppression Définitive",
 						class    : "btn-danger confirm",
 						callback : deleteProject
 					}]
@@ -64,13 +64,13 @@ define [
 
 				modalOptions =
 					isStatic: false
-					title:'Registration Required'
-					message: "You need to register to clone a project"
+					title:'Enregistrement Requis'
+					message: "Vous devez être enregistré(e) pour cloner un projet."
 					buttons: [{
-							text     : "Cancel",
+							text     : "Annuler",
 							class    : "btn",
 						}, {
-						text     : "Register Now",
+						text     : "S'enregistrer Maintenant",
 						class    : "btn-success confirm",
 						callback : goToRegPage
 					}]
@@ -86,7 +86,7 @@ define [
 				self = @
 				$confirm.click (e)->
 					$confirm.attr("disabled", true)
-					$confirm.text("Cloning...")
+					$confirm.text("Clonage...")
 					projectName = $modal.find('input').val()
 					$.ajax
 
@@ -113,7 +113,7 @@ define [
 				}
 			"""
 			$(document.body).append(@fontSizeCss)
-	
+
 		bindToProjectName: () ->
 			@project.on "change:name", (project, newName) ->
 				$element = $('.projectName')
@@ -166,7 +166,7 @@ define [
 					if hasRootDoc
 						$docList.val(@project.get("rootDoc_id"))
 					else
-						option = $(template(name:"No Root Document Selected!"))
+						option = $(template(name:"Aucun Document Principal Sélectionné !"))
 						option.attr('value', 'blank')
 						$docList.append(option)
 						$docList.val('blank')
@@ -187,7 +187,7 @@ define [
 					@project.set("publicAccesLevel", newSetting)
 				modalOptions =
 					buttons: [{
-						text     : "Cancel",
+						text     : "Annuler",
 						class    : "btn",
 						callback : cancelChange
 					},{
@@ -197,14 +197,14 @@ define [
 					}]
 
 				if newSetting == 'readOnly'
-					modalOptions.title = 'Make Project Public - Read Only'
-					modalOptions.message = 'Are you sure you want make this project public to the world? Google and search engines will be able to see it. Public users will not be able to edit the project'
+					modalOptions.title = 'Rendre le Projet Public - Lecture Seule'
+					modalOptions.message = 'Êtes-vous sûr(e) de vouloir rendre le projet public ? Google et autres moteurs de recherche seront capable de le trouver. Les utilisateurs ne pourront pas éditer le projet.'
 				else if newSetting == 'readAndWrite'
-					modalOptions.title = 'Make Project Public - Read and Write'
-					modalOptions.message = 'Are you sure you want make this project public to the world? Google and search engines will be able to see it. Public users will be able to write and modify the project'
+					modalOptions.title = 'Rendre le Projet Public - Lecture et Ecriture'
+					modalOptions.message = 'Êtes-vous sûr(e) de vouloir rendre le projet public ? Google et autres moteurs de recherche seront capable de le trouver. Les utilisateurs pourront éditer le projet.'
 				if newSetting == 'private'
-					modalOptions.title = 'Make Project Private'
-					modalOptions.message = 'Are you sure you want make this project private? Only registered users who are given permission below will be able to view the project'
+					modalOptions.title = 'Rendre le Projet Privé'
+					modalOptions.message = 'Êtes-vous sûr(e) de vouloir rendre le projet privé ? Seuls les utilisateurs enregistrés avec les bonnes permissions pourront voir le projet.'
 
 				Modal.createModal modalOptions
 

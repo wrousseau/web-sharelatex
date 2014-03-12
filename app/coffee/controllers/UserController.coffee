@@ -30,7 +30,7 @@ module.exports =
 			newTemplateData.templateName = req.session.templateData.templateName
 
 		res.render 'user/register',
-			title: 'Register'
+			title: 'Enregistrement'
 			redir: req.query.redir
 			sharedProjectData: sharedProjectData
 			newTemplateData: newTemplateData
@@ -119,7 +119,7 @@ module.exports =
 					 text:'This email address has not been registered with us'
 					 type:'failure'
 				logger.info email: email, "no user found with email"
-				
+
 	logout : (req, res)->
 		metrics.inc "user.logout"
 		if req.session? && req.session.user?

@@ -1,37 +1,33 @@
 .box
-	.page-header      
-		h2 Project Settings
+	.page-header
+		h2 Paramètres du Projet
 	.tabbable
 		ul.nav.nav-tabs
 			li.active
-				a(href='#generalProjectSettings', data-toggle="tab") General
+				a(href='#generalProjectSettings', data-toggle="tab") Général
 			li
-				a(href='#exportSettings', data-toggle="tab") Export & Copy
+				a(href='#exportSettings', data-toggle="tab") Exportation & Copie
 			li
-				a(href='#deleteProjectTab', data-toggle="tab") Delete Project
-			- if(userCanSeeDropbox)
-				li#manageDropboxSettiingsTabLink
-					a(href='#dropboxProjectSettings', data-toggle='tab') Dropbox 
-						span.label.label-warning beta
+				a(href='#deleteProjectTab', data-toggle="tab") Supprimer le Projet
 
 		.tab-content.form-horizontal
 			.tab-pane#generalProjectSettings.form.form-horizontal.active
 				if privlageLevel == 'owner' || privlageLevel == 'readAndWrite'
 					.control-group
-						label(for='xlInput').control-label Project Name 
+						label(for='xlInput').control-label Nom du Projet
 						.controls
 							.input
 								input.projectName(type='text', value=project.name)
 
 					.control-group
-						label(for='input').control-label Root Document
+						label(for='input').control-label Document Principal
 						.controls
 							.input
 								select#rootDocList
 
 					.control-group
 						label(for='spellCheck').control-label
-							| Spell check
+							| Vérification d'Orthographe
 						.controls
 							select(name="spellCheckLanguage")#spellCheckLanguageSelection
 								option(value="",selected=(project.spellCheckLanguage == "")) Off
@@ -43,7 +39,7 @@
 										)= language.name
 
 					.control-group#multipleCompilers
-						label(for='input').control-label Compiler
+						label(for='input').control-label Compilateur
 						.controls
 							.input
 								select#compilers
@@ -52,26 +48,26 @@
 									option(value='xelatex') XeLaTeX
 									option(value='lualatex') LuaLaTeX
 				else
-					span You do not have permission to modify these settings.
+					span Vous n'avez pas les permissions pour modifier ces paramètres
 
 				if privlageLevel == 'owner'
 					.control-group
-						label(for='select').control-label Public Access 
+						label(for='select').control-label Accès Public
 						.controls
 							select#publicAccessLevel
-								option(value='private') Private
-								option(value='readOnly') Public - Read Only
-								option(value='readAndWrite') Public - Read and Write
+								option(value='private') Privé
+								option(value='readOnly') Public - Lecture Seule
+								option(value='readAndWrite') Publique - Lecture et Ecriture
 
 			.tab-pane#exportSettings
-				a.btn#DownloadZip Download Project as Zip
+				a.btn#DownloadZip Télécharger le Projet en Zip
 				div &nbsp;
-				a.btn(href='/project/'+project._id+'/clone').cloneProject Clone Project
+				a.btn(href='/project/'+project._id+'/clone').cloneProject Cloner le Projet
 
 			.tab-pane#deleteProjectTab
 				if privlageLevel == 'owner'
-					button#deleteProject.btn.btn-danger Delete Project
+					button#deleteProject.btn.btn-danger Supprimer le Projet
 				else
-					span You do not have permission to modify these settings.
+					span Vous n'avez pas les permissions pour modifier ces paramètres
 
 			.tab-pane#dropboxProjectSettings

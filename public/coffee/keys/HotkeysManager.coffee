@@ -3,7 +3,7 @@ define [
 	"ace/lib/useragent"
 ], (Modal) ->
 	useragent = require("ace/lib/useragent")
-	
+
 	class HotKeysManager
 		template: $("#hotKeysLinkTemplate").html()
 
@@ -22,7 +22,7 @@ define [
 				el.find(".mac").hide()
 
 			new Modal
-				title: "Hot keys"
+				title: "Raccourcis"
 				el: el
 				buttons: [{
 					text: "Hide"

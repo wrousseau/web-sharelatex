@@ -94,7 +94,7 @@ define [
 				email      : member.email
 				id         : member._id
 				privileges : privileges
-			
+
 	ProjectMemberListView = Backbone.View.extend
 		template : $("#projectMemberListTemplate").html()
 
@@ -128,7 +128,7 @@ define [
 			if @itemViews[model.id]?
 				@itemViews[model.id].remove()
 				delete @itemViews[model.id]
-	
+
 		addMember: (e) ->
 			e.preventDefault()
 			email = @$(".addUserForm .email").val()
@@ -151,17 +151,17 @@ define [
 		render: ->
 			@setElement $(Mustache.to_html(@template, @modelView()))
 			return this
-	
+
 		modelView: ->
 			modelView = @model.toJSON()
 			modelView.privileges = {
-				readOnly     : "Read Only"
-				readAndWrite : "Read and Write"
-				owner        : "Owner"
+				readOnly     : "Lecture Seule"
+				readAndWrite : "Lecture et Ecriture"
+				owner        : "Propriétaire"
 			}[modelView.privileges]
 			modelView.showRemove = @options.showRemove
 			return modelView
-	
+
 		removeMember: (e) ->
 			e.preventDefault()
 			@options.manager.removeMember(@model)
@@ -181,10 +181,10 @@ define [
 			_.bindAll(this, "render");
 			this.model.bind('change', this.render)
 			@refreshPublishStatus()
-			
+
 
 		render: ->
-			viewModel = 
+			viewModel =
 				description: @model.get("description")
 				canonicalUrl: @model.get("template.canonicalUrl")
 				isPublished: @model.get("template.isPublished")
@@ -227,7 +227,7 @@ define [
 				@hideWorking()
 				if err?
 					@showError()
-				else 
+				else
 					@refreshPublishStatus()
 
 		unPublishProjectAsTemplate: ->
@@ -237,7 +237,7 @@ define [
 				@hideWorking()
 				if err?
 					@showError()
-				else 
+				else
 					@refreshPublishStatus()
 
 		updateDescription: ->
@@ -258,7 +258,7 @@ define [
 
 		url: (medium) ->
 			"#{window.sharelatex.siteUrl}/project/#{@ide.project.get("id")}" +
-			"?r=#{@ide.user.get("referal_id")}&rs=ps&rm=#{medium}" # Referal source = public share				
+			"?r=#{@ide.user.get("referal_id")}&rs=ps&rm=#{medium}" # Referal source = public share
 
 		render: ->
 			$(@el).html $(@template)
@@ -315,7 +315,7 @@ define [
 							text: "OK"
 							class: "btn btn-primary"
 						]
-			
+
 		ensurePublic: (callback = (error, success) ->) ->
 			accessLevel = @ide.project.get("publicAccesLevel")
 			if accessLevel == "private"
@@ -348,4 +348,4 @@ define [
 		ProjectMemberList     : ProjectMemberList
 		ProjectMemberListView : ProjectMemberListView
 	}
-			
+
