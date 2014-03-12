@@ -8,18 +8,18 @@
 				// http://stackoverflow.com/questions/1718547/jquery-draggable-scroll-not-working-when-helper-clone-is-used
 				#sections(style="position: relative;")
 				#options
-					span#saving-area 
+					span#saving-area
 
 			#content.content.ui-layout-center
 				#loading.fullEditorArea
 				#disconnect(style='display: none;').fullEditorArea
-					#mainAreaMessage Sorry, your browser has lost the connection to our server. Please try refreshing the page.
+					#mainAreaMessage Votre navigateur a perdu la connexion au serveur. Veuillez tenter de rafraîchir la page.
 				#projectDeleted(style='display: none;').fullEditorArea
-					#mainAreaMessage This project has been renamed or deleted.
+					#mainAreaMessage Ce projet a été renommé ou supprimé
 				#folderArea(style='display: none;').fullEditorArea
 				#imageArea(style='display: none;').fullEditorArea
 					iframe
-		
+
 	script(type="text/template")#tabTemplate
 		li(id="{{ id }}-tab-li")
 			a(href="#", data-toggle="tab", data-target="\\#{{ id }}-tab", class="tab-link {{ id }}-tab")
@@ -34,27 +34,27 @@
 	script(type="text/template")#fileTreeActionsTemplate
 		.actions
 			.new-entity.dropdown.js-new-entity-menu
-				a.dropdown-toggle(href="#", data-toggle="dropdown", title="New file, folder or upload")
+				a.dropdown-toggle(href="#", data-toggle="dropdown", title="Nouveau fichier, dossier ou upload")
 					i.icon-plus
-					span.text New
+					span.text Nouveau
 				ul.dropdown-menu
 					li
 						a.js-new-file(href="#")
 							img(src="/img/nide/doc.png")
-							| New File
+							| Nouveau Fichier
 					li
 						a.js-new-folder(href="#")
 							img(src="/img/nide/folder.png")
-							| New Folder
+							| Nouveau Dossier
 					li
 						a.js-upload-file(href="#")
 							img(src="/img/upload-file.png")
-							| Upload file(s)
+							| Uploader fichier(s)
 			.js-rename-btn.rename-btn
-				a(href="#", title="Rename")
+				a(href="#", title="Renommer")
 					i.icon-pencil
 			.js-delete-btn.delete-btn
-				a(href="#", title="Delete")
+				a(href="#", title="Supprimer")
 					i.icon-trash
 
 	script(type="text/template")#rootDocListEntity
@@ -76,15 +76,15 @@
 				i(class="sprite-{{ type }}")
 				span.name {{ name }}
 				input.rename.js-rename
-	
+
 	script(type="text/template")#entityListTemplate
 		.contents
 			.entity-list(id="{{ id }}-file-list")
 
 	script(type="text/template")#newEntityModalTemplate
 		div
-			input.inputmodal(placeholder="name")
-	
+			input.inputmodal(placeholder="nom")
+
 	script(type="text/template")#messageTemplate
 		.chatMessage
 			span.name {{name}}
@@ -98,7 +98,7 @@
 			ul.dropdown-menu.pull-right
 				li.divider
 				li
-					a#learnWord(href="#") Learn word
+					a#learnWord(href="#") Retenir le mot
 
 	script(type="text/template")#spellingMenuEntryTemplate
 		li.spelling-suggestion
@@ -110,7 +110,7 @@
 	script(type="text/template")#contextMenuEntryTemplate
 		li
 			a(href="#") {{text}}
-	
+
 	script(type="text/template")#genericModalTemplate
 		.modal
 			.modal-header
@@ -150,7 +150,7 @@
 					#editorWrapper
 						#editor
 						#undoConflictWarning(style="display: none")
-							| <strong>Watch out!</strong> We had to undo some of your collaborators changes before we could undo yours.
+							| <strong>Attention!</strong> Des modifiactions de vos collaborateurs ont dues êtres annulées avant de pouvoir annuler les votres.
 							a(href="#").js-hide Hide
 				#rightEditorPanel.ui-layout-east
 
@@ -159,50 +159,46 @@
 
 	script(type="text/template")#pdfSideBarLinkTemplate
 		ul
-			li.root.project#pdf(title='Show PDF', alt='pdf')
-				img(src='/img/pdf.png') 
+			li.root.project#pdf(title='Afficher PDF', alt='pdf')
+				img(src='/img/pdf.png')
 				span PDF
-	
-	script(type="text/template")#helpLinkTemplate
-		div
-			a(href="#", title="LaTeX Help") LaTeX Help
 
 	script(type="text/template")#editorTourTemplate
 		div
-			a(href="#", title="Editor Tour") Editor Tour
+			a(href="#", title="Guide de l'éditeur") Guide Editeur
 
 	script(type="text/template")#pdfPanelTemplate
 		#pdfArea(style='display: none;').fullEditorArea
 			#pdfToolBar.btn-toolbar
 				.btn-group
-					button#recompilePdf.btn.btn-success(type='button') Recompile
+					button#recompilePdf.btn.btn-success(type='button') Recompiler
 				.btn-group#showLogGroup
 					button#showLog.btn Logs
 				.btn-group#showPdfGroup
-					button#showPdf.btn Back to PDF
+					button#showPdf.btn Retour au PDF
 				.btn-group
-					button#downloadPdf.btn Download
+					button#downloadPdf.btn Télécharger
 					button#downloadLinksButton.btn.dropdown-toggle(data-toggle="dropdown")
 						span.caret
 					ul.dropdown-menu#downloadLinks
 				.btn-group.pull-right(data-toggle="buttons-radio")
-					button(type="button", title="Flat view")#flatViewButton.btn
+					button(type="button", title="Vue Simple")#flatViewButton.btn
 						i.icon-flatview
-					button(type="button", title="Split view")#splitViewButton.btn
+					button(type="button", title="Vue Partagée")#splitViewButton.btn
 						i.icon-splitview
 			#pdfAreaContent
 				.not-compiled-yet-message
-					| Click here to preview your work as a PDF.
-				.compiling-message(style='display: none;') Compiling...
+					| Cliquez ici pour prévisualiser votre travail en PDF.
+				.compiling-message(style='display: none;') Compilation...
 				#logArea(style='display: none;')
 					ul
-					button.btn.btn-info.btn-large#showRawLog Show Raw Logs
+					button.btn.btn-info.btn-large#showRawLog Afficher Logs Bruts
 				#rawLogArea(style='display: none;')
 					pre
 
 	script(type="text/template")#outputFileLinkTemplate
 		li
-			a(href="/project/{{ project_id }}/output/{{ path }}", target="_blank") Download {{ name }}
+			a(href="/project/{{ project_id }}/output/{{ path }}", target="_blank") Télécharger {{ name }}
 
 	script(type="text/template")#pdfjsViewerTemplate
 		.pdfjs-viewer
@@ -218,26 +214,26 @@
 					img(src="/img/iconshock/zoom-in.png")
 			.progress.progress-info
 				.bar
-				span Loading
+				span Chargement
 
 	script(type="text/template")#compileSuccessTemplate
 		li.alert.alert-success
-			strong No errors. 
-			span Great Job!
-	
+			strong Aucune erreur.
+			span Félicitations!
+
 	script(type="text/template")#compileErrorTemplate
 		li.alert.alert-error
-			strong Compile Error: 
-			span Sorry, something went wrong and the project could not be compiled. This may be due to our compiler being overloaded or an incompatibility with the project. Please try again in a few moments and if the problem continues let us know via the feedback tab at the top.
-	
+			strong Erreur de Compilation:
+			span La compilation du projet a échoué. Cela peut être du à une surcharge du compilateur ou à une incompatibilité avec le projet. Veuillez retenter dans quelques instants et contacter à terme le SIE (pbinfo@ensta.fr).
+
 	script(type="text/template")#compileFailedTemplate
 		li.alert.alert-error
-			strong Ooops, your LaTeX code couldn't compile for some reason. Please check these errors for details:
-		
+			strong Ooops, la compilation du code LaTeX a échoué. Veuillez vérifier ces erreurs pour plus de détails :
+
 
 	script(type="text/template")#compileLogEntryTemplate
 		li.alert.clickable(class="alert-{{ type }}")
-			strong {{ title }}: 
+			strong {{ title }}:
 			span {{ message }}
 			.small {{ content }}
 
@@ -246,16 +242,16 @@
 			thead
 				tr
 					th Email
-					th Privileges
+					th Privilèges
 					th
 			tbody
 		{{#showAdminControls}}
 		form.well.form-inline.addUserForm
-			input(type="email",placeholder="someone@email.com")#newEmail.email.input-large
+			input(type="email",placeholder="prenom.nom@ensta-paristech.fr")#newEmail.email.input-large
 			select.privileges.input-medium
-				option(value="readAndWrite") Read and write
-				option(value="readOnly") Read Only
-			button.btn.btn-primary.addUser Add New Collaborator
+				option(value="readAndWrite") Lecture et Ecriture
+				option(value="readOnly") Lecture Seule
+			button.btn.btn-primary.addUser Ajouter un nouveau collaborateur
 		{{/showAdminControls}}
 
 	script(type="text/template")#projectMemberListItemTemplate
@@ -264,53 +260,8 @@
 			td.privileges {{ privileges }}
 			td
 				{{#showRemove}}
-				button(href="#").btn.btn-danger.removeUser Remove
+				button(href="#").btn.btn-danger.removeUser Supprimer
 				{{/showRemove}}
-
-	script(type="text/template")#socialSharingTemplate
-		.box
-			.page-header
-				h2 Share Publicly
-			link(href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css",rel="stylesheet")
-			div.share-button
-				a.btn.btn-twitter.btn-large(href="#")
-					i.icon-twitter
-					| &nbsp; Share on Twitter
-			div.share-button
-				.btn.btn-facebook.btn-large
-					i.icon-facebook
-					| &nbsp; Share on Facebook
-			div.share-button
-				.btn.btn-google-plus.btn-large
-					i.icon-google-plus
-					| &nbsp; Share on Google+
-			div.share-button
-				.btn.btn-large.btn-url
-					i.icon-link
-					| &nbsp; Share URL
-
-
-	script(type="text/template")#publishProjectTemplate
-		-if(session && session.user && session.user.isAdmin)
-			.box
-				.page-header
-					h2 Publish Project
-
-				#publishedAsTemplateArea(style="display:none;")
-					a#templateLink(href='{{canonicalUrl}}') View Template
-					p published at {{publishedDate}}
-					.btn.btn-warning#unPublishProjectAsTemplate unpublish project as template
-					.btn.btn-success#republishProjectAsTemplate re publish project as template
-
-				#problemWithPublishingArea(style="display:none;")
-					p There is a problem with our publishing service, please try again in a few minutes.
-				#publishWorkingArea(style="display:none;")
-					p Working.....
-				#unpublishedAsTemplateArea(style="display:none;")
-					.btn.btn-success#publishProjectAsTemplate Publish project as template
-				div
-					textarea.span6#projectDescription {{description}}
-
 
 	script(type="text/template")#settingsPanelTemplate
 		.fullEditorArea.projectSettings
@@ -319,8 +270,8 @@
 	script(type="text/template")#userPanelTemplate
 		.fullEditorArea.projectSettings
 			.box
-				.page-header      
-					h2 Share Privately (via email)
+				.page-header
+					h2 Partager en privé (par email)
 				#projectMembersList
 			#socialSharing
 			#publishProject
@@ -332,16 +283,16 @@
 		#historyAreaWrapper
 			#historySideBar
 				.take-snapshot-wrapper
-					a#take-snapshot.btn.btn-primary Take Snapshot
+					a#take-snapshot.btn.btn-primary Prendre un instantanné
 				#versionListArea
 			#diffViewArea
 		#enableVersioningMessage
-			.message History is not yet enabled for this project.
-			a.btn.btn-primary.btn-large#enableVersioning Enable history
-	
+			.message Historique est désactivé pour ce projet.
+			a.btn.btn-primary.btn-large#enableVersioning Activer Historique
+
 
 	script(type='text/template')#snapshotCommentTemplate
-		input(type="text", placeholder="Snapshot comment")#snapshotComment
+		input(type="text", placeholder="Commentaire d'Instantanné")#snapshotComment
 
 	script(type='text/template')#diffTemplate
 		.diffView
@@ -356,12 +307,12 @@
 				li.active
 					a(href="#diff-{{id}}", data-toggle="pill").diff Diff
 				li
-					a(href="#raw-{{id}}", data-toggle="pill").raw Raw
+					a(href="#raw-{{id}}", data-toggle="pill").raw Brut
 			{{/deleted}}
 			{{/diff}}
 			h3(class="{{headerClass}}") {{path}}
 			{{#moved}}
-			.fileMoved Moved to {{newPath}}
+			.fileMoved Déplacé vers {{newPath}}
 			{{/moved}}
 		{{#diff}}
 		.tab-content
@@ -390,24 +341,24 @@
 				.sectionSeparator
 				{{/sections}}
 			.tab-pane.tab-raw(id="raw-{{id}}")
-				pre.rawFileContent Loading...
+				pre.rawFileContent Chargement...
 		{{/diff}}
 		{{#binary}}
 		{{^deleted}}
-		.binaryFileDiff 
-			a(href="{{url}}",target="_blank").rawFileLink View this version of the file
+		.binaryFileDiff
+			a(href="{{url}}",target="_blank").rawFileLink Voir cette version du ficiher
 		{{/deleted}}
 		{{/binary}}
 
 	script(type='text/template')#versionListItemTemplate
 		a(href="#")
 			div(class='version-message') {{message}}
-			div(class='version-date') {{date}} 
+			div(class='version-date') {{date}}
 
 	script(type='text/template')#versionListTemplate
 		ul#version-list.nav.nav-pills.nav-stacked
-			li.loading Loading...
-			li.empty-message You don't have any versions yet!
+			li.loading Chargement...
+			li.empty-message Aucune version présente!
 
 	script(type='text/template')#fileViewTemplate
 		{{#image}}
@@ -415,13 +366,13 @@
 			img(src='{{ previewUrl }}')
 		{{/image}}
 		{{^image}}
-		.no-preview No preview available :(
+		.no-preview Aucun preview disponible :(
 		{{/image}}
 		a(href='{{ downloadUrl }}', target="_blank").download.btn.btn-large Download {{ name }}
 
 	script(type='text/template')#hotKeysLinkTemplate
 		div
-			a(href="#", title='Show Hot Keys List') Hot keys
+			a(href="#", title='Afficher les touches rapides') Touches Rapides
 
 	script(type='text/template')#trackChangesPanelTemplate
 		#trackChangesPanel
@@ -440,41 +391,41 @@
 			input(type="radio",name="toVersion").change-selector-to
 
 		div(class='change-description')
-			div(class='change-date') {{date}} 
+			div(class='change-date') {{date}}
 			div(class='change-name')
 				div.color-square(style="background-color: hsl({{hue}}, 100%, 70%);")
 				span {{name}}
 
 	script(type='text/template')#changeListTemplate
 		ul.change-list.nav.nav-pills.nav-stacked
-			li.loading-changes Loading...
-			li.empty-message You haven't made any changes yet!
+			li.loading-changes Chargement...
+			li.empty-message Aucun changement effectué!
 
 	script(type='text/template')#hotKeysListTemplate
 		.hotkeys
-			h3 Common
+			h3 Communs
 			.hotkeys-column
 				.hotkey
 					span.combination.win Ctrl + F
 					span.combination.mac Cmd + F
-					span.description     Find (and replace)
+					span.description     Chercher (et remplacer)
 				.hotkey
-					span.combination.win Ctrl + Enter
-					span.combination.mac Cmd + Enter
-					span.description     Compile
+					span.combination.win Ctrl + Entrée
+					span.combination.mac Cmd + Entrée
+					span.description     Compiler
 				.hotkey
 					span.combination.win Ctrl + /
 					span.combination.mac Cmd + /
-					span.description     Toggle Comment
+					span.description     Activer Commentaire
 			.hotkeys-column
 				.hotkey
 					span.combination.win Ctrl + Z
 					span.combination.mac Cmd + Z
-					span.description     Undo
+					span.description     Annuler
 				.hotkey
 					span.combination.win Ctrl + Y
 					span.combination.mac Cmd + Y
-					span.description     Redo
+					span.description     Rétablir
 			.clear
 
 			h3 Navigation
@@ -482,39 +433,39 @@
 				.hotkey
 					span.combination.win Ctrl + Home
 					span.combination.mac Cmd + Home
-					span.description     Beginning of document
+					span.description     Début du Document
 				.hotkey
-					span.combination.win Ctrl + End
-					span.combination.mac Cmd + End
-					span.description     End of document
+					span.combination.win Ctrl + Fin
+					span.combination.mac Cmd + Fin
+					span.description     Fin du Document
 			.hotkeys-column
 				.hotkey
 					span.combination.win Ctrl + L
 					span.combination.mac Cmd + L
-					span.description     Go To Line
+					span.description     Aller à la ligne
 			.clear
 
-			h3 Editing
+			h3 Edition
 			.hotkeys-column
 				.hotkey
 					span.combination.win Ctrl + D
 					span.combination.mac Cmd + D
-					span.description     Delete Current Line
+					span.description     Effacer ligne courante
 				.hotkey
 					span.combination.win Ctrl + A
 					span.combination.mac Cmd + A
-					span.description     Select All
+					span.description     Tout sélectionner
 				.hotkey
 					span.combination.win Tab
 					span.combination.mac Tab
-					span.description     Indent Selection
+					span.description     Indenter la sélection
 			.hotkeys-column
 				.hotkey
 					span.combination.win Ctrl + U
-					span.combination.mac Ctrl + U 
-					span.description     To Uppercase
+					span.combination.mac Ctrl + U
+					span.description     En Majuscules
 				.hotkey
 					span.combination.win Ctrl + Shift + U
-					span.combination.mac Ctrl + Shift + U 
-					span.description     To Lowercase
+					span.combination.mac Ctrl + Shift + U
+					span.description     En Minuscules
 			.clear

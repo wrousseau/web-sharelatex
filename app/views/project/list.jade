@@ -37,7 +37,7 @@ block content
 							a(href='/project/'+project._id+'/download/zip').downloadZip Télécharger en Zip
 				a.projectName(href="/project/#{project._id}") #{project.name}
 				.projectDetails
-					span Last modified on
+					span Modifié le &nbsp;
 					span.isoDate #{project.lastUpdated.toISOString()}
 					span &nbsp; - &nbsp;
 					span #{formatPrivlageLevel(project.publicAccesLevel)}
@@ -48,7 +48,7 @@ block content
 						mixin tag(project_id, tag.name, true)
 					span.new-tags
 						span.newTagLocation
-						span.label.addTagButton(data-project-id=project_id) Add Tag
+						span.label.addTagButton(data-project-id=project_id) Ajouter un Tag
 							i.icon-plus.icon-white
 
 						div
@@ -63,7 +63,7 @@ block content
 				.span12
 					.page-header
 						.btn-group.pull-right#newProject
-							a.btn.btn-success.dropdown-toggle(data-toggle="dropdown", href="#") New Project
+							a.btn.btn-success.dropdown-toggle(data-toggle="dropdown", href="#") Nouveau Projet
 								span.caret
 							ul.dropdown-menu.pull-right(role="menu")
 								li
@@ -74,13 +74,12 @@ block content
 									a.normalText#newProjectBeamer(href="#", data-csrf=csrfToken) Présentation Beamer
 								li
 									a.normalText#uploadNewProject(href="#", data-csrf=csrfToken) Uploader un Projet Zippé
-								li.divider
 						h1 Projets
 			- if (projects.length > 0)
 				.row-fluid
 					.span9
 						form.search
-							input#projectFilter(placeholder='Search Projects', autofocus='autofocus').span6.projectSearch.search-query
+							input#projectFilter(placeholder='Rechercher Project', autofocus='autofocus').span6.projectSearch.search-query
 							i.icon-search
 							i.icon-remove
 						ul#projectList

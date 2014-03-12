@@ -5,44 +5,36 @@
 				ul.nav
 					-if(session && session.user)
 						li
-							a(href='/project') Projects
+							a(href='/project') Projets
 					-if(typeof(tenderUrl) != "undefined")
 						li
 							a.js-tender-widget(href='#') Support &amp; Feedback
 						li.nav-collapse
 							a(href='/help') Help
-					li.nav-collapse
-						a(href='/blog') Blog
-					li.nav-collapse
-						a(href='/templates') LaTeX Templates
 					- if (settings.enableSubscriptions)
 						li.nav-collapse
 							a(href='/user/subscription/plans')#plansLink Plans &amp; Pricing
 					li.dropdown.nav-collapse
-						a.dropdown-toggle(href='#',data-toggle="dropdown") Info
+						a.dropdown-toggle(href='#',data-toggle="dropdown") Aide
 							b.caret
 						ul.dropdown-menu
 							li.nav-collapse
-								a(href="/learn") LaTeX help guide
+								a(href="http://www.babafou.eu.org/Apprends_LaTeX/Apprends_LaTeX.pdf") Apprends LaTeX (Babafou)
 							li.nav-collapse
-								a(href='/resources') LaTeX Resources
-							li.nav-collapse
-								a(href='/about') About Us
+								a(href='/resources') Autres ressources LaTeX
 				ul.nav.pull-right
 					-if(session && session.user)
 						li.dropdown
-							a.dropdown-toggle(href="#",data-toggle="dropdown") Account
+							a.dropdown-toggle(href="#",data-toggle="dropdown") Compte
 								b.caret
 							ul.dropdown-menu
 								li
-									a(href='/user/settings') User Settings
+									a(href='/user/settings') Paramètres Utilisateur
 								li
-									a(href='/user/subscription') Subscription
-								li
-									a(href='/logout') Logout
+									a(href='/logout') Déconnexion
 					-else
 						li
 							a(href='/register') Register
-						li 
+						li
 							a#loginLink(href='/login'+getRedirAsQueryString()) Login
 

@@ -11,14 +11,14 @@ block content
 					input(name='_csrf', type='hidden', value=csrfToken)
 					input(name='redir', type='hidden', value=redir)
 					.clearfix
-						label(for='xlInput') Email 
+						label(for='xlInput') Email
 						.input
-							input.span4#email.email.required(type='email', autofocus="autofocus", name='email', placeholder='your@email.com')
+							input.span4#email.email.required(type='email', autofocus="autofocus", name='email', placeholder='prenom.nom@ensta-paristech.fr')
 					.clearfix
-						label(for='xlInput') Password 
+						label(for='xlInput') Mot de Passe
 						.input
 							input.span4#password.required(type='password', name='password', placeholder='********')
 					.actions
 						button.btn-primary.btn.btn-large#login(type='submit') Login
-						a#passwordReset(href='/user/passwordreset') forgot password?
+						a#passwordReset(href='/user/passwordreset') mot de passe oublié?
 	include ../general/small-footer

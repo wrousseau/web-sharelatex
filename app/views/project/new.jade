@@ -1,19 +1,19 @@
 .container
 	.page-header
-		h1 New File
+		h1 Nouveau fichier
 	.row
 		.span12.columns
 			form#newFile(enctype='multipart/form-data', method='post')
 				fieldset
 					.clearfix
-						label(for='xlInput') Name 
+						label(for='xlInput') Nom
 						.input
 							input.xlarge(type='text', name='name')
 					.clearfix
-						label(for='xlInput') Upload File 
+						label(for='xlInput') Uploder fichier
 						.input
 							input#file_upload.input-file(type='file', name='image')
-	
+
 					.actions
-						Button.primary.btn(type='submit') Save
+						Button.primary.btn(type='submit') Sauvegarder
 

@@ -5,33 +5,33 @@ block content
 		.row
 			.registration_message
 				if sharedProjectData.user_first_name !== undefined
-					h1 #{sharedProjectData.user_first_name} would like you to view '#{sharedProjectData.project_name}'
-					div Join ShareLaTeX to view this project
+					h1 #{sharedProjectData.user_first_name} souhaiterais que vous puissez voir '#{sharedProjectData.project_name}'
+					div Enregistez-vous pour rejoindre le projet
 				else if newTemplateData.templateName !== undefined
-					h1 Please register to edit the '#{newTemplateData.templateName}' template
-					div Already have a ShareLaTeX account? 
-						a(href="/login") Login here
+					h1 Veuillez vous enregistrer pour éditer le template '#{newTemplateData.templateName}'
+					div Déjà un compte ?
+						a(href="/login") Login
 
 		.row
 			.span-box.span4.offset4
 				.page-header
-					h1 Register
+					h1 S'enregistrer
 				.messageArea
 				form#registerFormShort(method="post")
 					input(name='_csrf', type='hidden', value=csrfToken)
 					input(name='redir', type='hidden', value=redir)
 					.clearfix
-						label(for='xlInput') Email 
+						label(for='xlInput') Email
 						.input
 							input#email.span4.email.required(type='email', name='email', value='#{new_email}')
 					.clearfix
-						label(for='xlInput') Password 
+						label(for='xlInput') Mot de Passe
 						.input
 							input#password.span4.required(type='password', name='password')
 					.actions
-						button#registerButton.btn-primary.btn.btn-xlarge(type='submit') Register
-						
-					
+						button#registerButton.btn-primary.btn.btn-xlarge(type='submit') S'enregistrer
+
+
 
 	include ../general/small-footer
 
